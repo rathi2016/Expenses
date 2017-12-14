@@ -1,4 +1,17 @@
 @Records = React.createClass
+
+credits: ->
+      credits = @state.records.filter (val) -> val.amount >= 0
+      credits.reduce ((prev, curr) ->
+        prev + parseFloat(curr.amount)
+      ), 0
+    debits: ->
+      debits = @state.records.filter (val) -> val.amount < 0
+      debits.reduce ((prev, curr) ->
+        prev + parseFloat(curr.amount)
+      ), 0
+    balance: ->
+      @debits() + @credits()
 handleChange: (e) ->
       name = e.target.name
       @setState "#{ name }": e.target.value
