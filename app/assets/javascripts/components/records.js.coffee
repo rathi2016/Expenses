@@ -1,4 +1,8 @@
 @Records = React.createClass
+handleChange: (e) ->
+      name = e.target.name
+      @setState "#{ name }": e.target.value
+      
     render: ->
       React.DOM.div
         className: 'records'

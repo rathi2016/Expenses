@@ -1,4 +1,6 @@
 @RecordForm = React.createClass
+    valid: ->
+      @state.title && @state.date && @state.amount
     getInitialState: ->
       title: ''
       date: ''
@@ -33,6 +35,7 @@
             name: 'amount'
             value: @state.amount
             onChange: @handleChange
+            React.DOM.form
         React.DOM.button
           type: 'submit'
           className: 'btn btn-primary'
